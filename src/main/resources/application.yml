@@ -4,7 +4,7 @@ server:
 spring:
   application:
     name: example
-# ???? ??
+# 네이티브 방식
 #  cloud:
 #    config:
 #      server:
@@ -15,23 +15,17 @@ spring:
 # server endpoint : localhost:8888/example/dev
 # server endpoint : localhost:8888/example/prod
 
-# public git ??
-# git ??? ??? ?? ??? ??? application? name? file? ??? ???? ??.
-# EX) {applicationName}-{env}.yml
+# public git 설정
+# git 설정의 경우 상단의 application name과 파일의 시작 이름이 동일해야 한다. (아래 참조)
+# EX) {applicationName}{envName}.yml
   cloud:
     config:
       server:
         git:
           uri: https://github.com/Leerilla/configFileRepo
-# private ??? ??? ?? ??? ??? ???? ????? ??? ? ??? ???? ??? ssh ???? ???? ?? ????.
+# private 환경은 아래와 같이 git의 경로와 id, pass를 입력하면 된다.
+# 그러나 아래의 방법은 올바르지 않으며 권장하는 방식은 ssh 인증을 사용하는 방식이다.
 #          username:
 #          password:
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: ['refresh', 'beans', 'evn']
-
 
 
